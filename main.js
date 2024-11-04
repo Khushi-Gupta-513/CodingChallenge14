@@ -7,7 +7,7 @@ async function fetchTickets() {
         ticketContainer.innerHTML = 'Loading tickets...';
         
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        
+
         // Check if response is ok (status code 200-299)
         if (!response.ok) {
             throw new Error('Network response was not ok.');
@@ -39,13 +39,15 @@ async function fetchTickets() {
         // Handle errors and display custom error messages
         errorMessage.innerHTML = error.message;
     } finally {
-        // Hide loading message or any indicators
-        ticketContainer.innerHTML = '';
+        // Cleanup code, if necessary
+        // Here you can remove the loading message if needed
+        // ticketContainer.innerHTML = '';
     }
 }
 
 // Call the function to fetch tickets when the page loads
 fetchTickets();
+
 
 
 // Call fetchTickets to load the tickets when the page loads
