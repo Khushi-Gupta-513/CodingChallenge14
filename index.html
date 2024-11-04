@@ -4,23 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Support Tickets</title>
-  <style>
-    .ticket { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
-    .loading { font-style: italic; }
-    .error { color: red; }
-  </style>
 </head>
 <body>
   <h1>Customer Support Tickets</h1>
-
-  <!-- Loading indicator -->
-  <p id="loading-message" class="loading">Loading tickets, please wait...</p>
-
-  <!-- Container for tickets -->
+  <p id="loading-message" style="color: purple;">Loading tickets, please wait...</p>
   <div id="ticket-container"></div>
-
-  <!-- Error message -->
-  <p id="error-message" class="error"></p>
+  <p id="error-message" style="color: red;"></p>
 
   <script src="main.js"></script>
 </body>
