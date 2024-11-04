@@ -14,6 +14,9 @@ async function fetchTickets() {
   } catch (error) {
     errorMessage.textContent = error.message;
     console.error("Error fetching tickets:", error);
+  } finally {
+    // Hide any loading indicators here if they were added
+    console.log("Fetch attempt completed.");
   }
 }
 
