@@ -6,22 +6,21 @@ async function fetchTickets() {
   try {
     const response = await fetch(apiEndpoint);
     
-    // Check if response is not OK (e.g., network issues)
     if (!response.ok) throw new Error("Failed to fetch tickets.");
-    
+
     const tickets = await response.json();
     
-    // Throw custom error if no tickets are available
     if (tickets.length === 0) throw new Error("No unresolved tickets available.");
-    
-    displayTickets(tickets); // Call function to display tickets if fetch is successful
+
+    displayTickets(tickets);
   } catch (error) {
-    errorMessage.textContent = error.message; // Display error message
+    errorMessage.textContent = error.message;
     console.error("Error fetching tickets:", error);
+  } finally {
+    console.log("Fetch attempt completed.");
+    // Hide loading indicators or perform cleanup tasks here if needed
   }
 }
-
-fetchTickets();
 
 // Function to display tickets
 function displayTickets(tickets) {
