@@ -5,33 +5,30 @@ const errorMessage = document.getElementById("error-message");
 
 async function fetchTickets() {
   try {
-    const response = await fetch(apiEndpoint);
+    // Show loading message
+    loadingMessage.style.display = "block";
 
-    // Check if the response is OK; if not, throw an error
+    const response = await fetch(apiEndpoint);
     if (!response.ok) throw new Error("Failed to fetch tickets.");
 
     const tickets = await response.json();
-
-    // If no tickets are found, throw a custom error
     if (tickets.length === 0) throw new Error("No unresolved tickets available.");
 
-    displayTickets(tickets); // If fetch is successful, display the tickets
+    displayTickets(tickets);
   } catch (error) {
-    // Display a friendly error message to the user if any error occurs
+    // Show error message if fetch fails
     errorMessage.textContent = error.message;
     console.error("Error fetching tickets:", error);
   } finally {
-    // Hide the loading message once the fetch completes, whether successful or not
+    // Hide loading message
     loadingMessage.style.display = "none";
   }
 }
 
 function displayTickets(tickets) {
-  // Clear any previous content in the container
-  ticketContainer.innerHTML = "";
+  ticketContainer.innerHTML = ""; // Clear container
 
   tickets.forEach((ticket) => {
-    // Create a container for each ticket
     const ticketElement = document.createElement("div");
     ticketElement.classList.add("ticket");
 
@@ -46,4 +43,6 @@ function displayTickets(tickets) {
   });
 }
 
+// Call fetchTickets to load the tickets when the page loads
 fetchTickets();
+
